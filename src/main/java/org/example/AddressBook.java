@@ -1,14 +1,40 @@
 package org.example;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class AddressBook {
+
+    @Id
+    private Integer id = null;
+
+    @OneToMany
     private List<BuddyInfo> buddies;
 
     public AddressBook() {
         this.buddies = new ArrayList<>();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<BuddyInfo> getBuddies() {
+        return buddies;
+    }
+
+    public void setBuddies(List<BuddyInfo> buddies) {
+        this.buddies = buddies;
     }
 
     public void addBuddy(BuddyInfo buddy) {

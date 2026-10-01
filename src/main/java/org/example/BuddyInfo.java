@@ -1,43 +1,103 @@
 package org.example;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class BuddyInfo {
-    private String name;
-    private String address;
+
+    @Id
+    private Integer id = null;
+
+    private String name = null;
+
+    private String address = null;
+
+    public BuddyInfo() {
+
+    }
 
     public BuddyInfo(String name, String address) {
         this.name = name;
         this.address = address;
     }
 
+    public Integer getId() {
+
+        return id;
+    }
+
+    public void setId(Integer id) {
+
+        this.id = id;
+    }
+
     public String getName() {
+
         return name;
     }
 
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
     public String getAddress() {
+
         return address;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        BuddyInfo other = (BuddyInfo) obj;
-        return Objects.equals(name, other.name) && Objects.equals(address, other.address);
+    public void setAddress(String address) {
+
+        this.address = address;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, address);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((address == null) ? 0 : address.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        BuddyInfo other = (BuddyInfo) obj;
+
+        if (id == null) {
+            if (other.id != null)
+                return false;
+
+        } else if (!id.equals(other.id))
+            return false;
+
+        if (name == null) {
+            if (other.name != null)
+                return false;
+
+        } else if (!name.equals(other.name))
+            return false;
+
+        if (address == null) {
+            if (other.address != null)
+                return false;
+
+        } else if (!address.equals(other.address))
+            return false;
+
+        return true;
     }
 
     @Override
     public String toString() {
-        return "BuddyInfo: " + "name: " + name + ", address: " + address + " ";
+        return "BuddyInfo [id=" + id + ", name=" + name + ", address=" + address + "]";
     }
 }
