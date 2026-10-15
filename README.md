@@ -1,0 +1,1 @@
+![Build Status](https://github.com/NickyF30/SYSC-4806-Labs/actions/workflows/maven.yml/badge.svg?branch=master)

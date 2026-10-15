@@ -1,4 +1,3 @@
-# Continuous integration: build the app and run all tests on every push / PR.
 name: Java CI with Maven
 
 on:
