@@ -65,4 +65,15 @@ class BuddyInfoTest {
         assertEquals(buddy1, buddy2);
         assertEquals(buddy1.hashCode(), buddy2.hashCode());
     }
+
+    @Test
+    public void testBuddyInfoPhoneNumber() {
+        BuddyInfo buddy = new BuddyInfo("Alice", "123 Carleton Way", "613-555-0199");
+        assertEquals("Alice", buddy.getName());
+        assertEquals("123 Carleton Way", buddy.getAddress());
+        assertEquals("613-555-0199", buddy.getPhoneNumber());
+
+        buddy.setPhoneNumber("613-555-9999");
+        assertEquals("613-555-9999", buddy.getPhoneNumber());
+    }
 }
