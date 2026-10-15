@@ -1,8 +1,12 @@
 package org.example;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +16,10 @@ import java.util.Objects;
 public class AddressBook {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id = null;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<BuddyInfo> buddies;
 
     public AddressBook() {
@@ -75,18 +80,5 @@ public class AddressBook {
     @Override
     public int hashCode() {
         return Objects.hash(buddies);
-    }
-
-    public static void main(String[] args) {
-        AddressBook addressBook = new AddressBook();
-
-        BuddyInfo buddy1 = new BuddyInfo("Nicky Fang", "613-555-0101");
-        BuddyInfo buddy2 = new BuddyInfo("Nicky Fang 2", "613-555-0202");
-
-        addressBook.addBuddy(buddy1);
-        addressBook.addBuddy(buddy2);
-
-        System.out.println("Address Book Contents:");
-        addressBook.printBuddies();
     }
 }
